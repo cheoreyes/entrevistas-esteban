@@ -101,9 +101,9 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
       <div>
         <h2 class="text-2xl font-bold text-white">Repositorio de Entrevistas</h2>
-        <p class="text-sm text-slate-400">Filtra por temática o busca conceptos clave.</p>
+        <p class="text-sm text-slate-400">Ordenadas automáticamente de la más reciente a la más antigua.</p>
       </div>
-      <input id="search-input" type="text" placeholder="Buscar tema (ej. Nvidia, Guri, BYD, Ciberseguridad)..." 
+      <input id="search-input" type="text" placeholder="Buscar tema (ej. PISA, Nvidia, Guri, BYD)..." 
         class="w-full md:w-80 px-4 py-2 rounded-xl bg-brand-900 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400" />
     </div>
 
@@ -125,7 +125,7 @@
         <h3 class="text-lg font-bold text-white">Generador de Nueva Entrevista (Modo Admin)</h3>
         <button onclick="toggleModal(false)" class="text-slate-400 hover:text-white text-xl">&times;</button>
       </div>
-      <p class="text-xs text-slate-300">Llena los datos del video de YouTube y este asistente te dará el bloque listo para copiar y pegar justo debajo de la línea <code>const INTERVIEWS_DATA = [</code> en tu archivo <code>index.html</code>.</p>
+      <p class="text-xs text-slate-300">No importa si la entrevista es nueva o antigua: **pégala siempre justo debajo de <code>const INTERVIEWS_DATA = [</code>**. El sistema la ordenará sola según la fecha.</p>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <div class="sm:col-span-2">
@@ -138,19 +138,19 @@
         </div>
         <div>
           <label class="block text-slate-400 mb-1">Minuto de Fin (MM:SS o HH:MM:SS)</label>
-          <input id="gen-end" type="text" placeholder="56:13" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
+          <input id="gen-end" type="text" placeholder="01:19:00" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div class="sm:col-span-2">
           <label class="block text-slate-400 mb-1">Título de la Entrevista</label>
-          <input id="gen-title" type="text" placeholder="Ej: El impacto de los Agentes de IA en la Economía" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
+          <input id="gen-title" type="text" placeholder="Ej: El Informe PISA, Inteligencia Artificial y Pensamiento Crítico" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div>
-          <label class="block text-slate-400 mb-1">Fecha</label>
-          <input id="gen-date" type="text" placeholder="29 Oct 2026" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
+          <label class="block text-slate-400 mb-1">Fecha (Formato: DD Mes AAAA)</label>
+          <input id="gen-date" type="text" placeholder="10 Sep 2026" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div>
           <label class="block text-slate-400 mb-1">Etiquetas (separadas por coma)</label>
-          <input id="gen-tags" type="text" placeholder="Inteligencia Artificial, Geopolítica, Venezuela" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
+          <input id="gen-tags" type="text" placeholder="Inteligencia Artificial, Educación, Venezuela" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div class="sm:col-span-2">
           <label class="block text-slate-400 mb-1">Resumen ejecutivo</label>
@@ -158,7 +158,7 @@
         </div>
         <div class="sm:col-span-2">
           <label class="block text-slate-400 mb-1">Capítulos (Uno por línea en formato <code>MM:SS | Título del capítulo</code>)</label>
-          <textarea id="gen-chapters" rows="4" placeholder="35:05 | Introducción al tema&#10;40:12 | Análisis de mercado global&#10;50:00 | Propuestas para Venezuela" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white font-mono"></textarea>
+          <textarea id="gen-chapters" rows="4" placeholder="58:28 | Introducción al tema&#10;01:03:03 | Análisis de mercado global&#10;01:15:16 | Propuestas para Venezuela" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white font-mono"></textarea>
         </div>
       </div>
 
@@ -168,7 +168,7 @@
 
       <div id="gen-output-container" class="hidden space-y-2 pt-2">
         <div class="flex justify-between items-center">
-          <span class="text-xs text-emerald-400 font-mono">¡Listo! Copia este bloque y pégalo justo debajo de const INTERVIEWS_DATA = [</span>
+          <span class="text-xs text-emerald-400 font-mono">¡Listo! Pégalo siempre justo debajo de const INTERVIEWS_DATA = [</span>
           <button onclick="copyGeneratedCode()" class="text-xs px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-mono">Copiar</button>
         </div>
         <pre id="gen-output" class="p-3 rounded-xl bg-black/90 border border-white/10 text-xs font-mono text-cyan-300 overflow-x-auto"></pre>
@@ -178,9 +178,29 @@
 
   <script>
     // ============================================================================
-    // 1. BASE DE DATOS DE ENTREVISTAS (PEGA SIEMPRE JUSTO DEBAJO DE ESTA LÍNEA)
+    // 1. BASE DE DATOS DE ENTREVISTAS
+    //    (PEGA CUALQUIER ENTREVISTA NUEVA O ANTIGUA JUSTO DEBAJO DE ESTA LÍNEA.
+    //     EL SISTEMA LAS ORDENA AUTOMÁTICAMENTE POR FECHA DE MÁS RECIENTE A MÁS ANTIGUA)
     // ============================================================================
     const INTERVIEWS_DATA = [
+      {
+        id: "entrevista-F0heuufO7yY-3508",
+        youtubeId: "F0heuufO7yY",
+        title: "El Informe PISA, Inteligencia Artificial y el Declive del Pensamiento Crítico",
+        date: "10 Sep 2026",
+        media: "Entre Líneas con Vladimir Villegas · Unión Radio",
+        startSeconds: 3508, // 58:28
+        endSeconds: 4740,   // 01:19:00
+        tags: ["Inteligencia Artificial", "Educación", "Tecnología", "Sociedad", "Venezuela"],
+        summary: "Análisis sobre los resultados históricos a la baja del informe PISA en los países de la OCDE, el auge educativo de los países asiáticos, la desmotivación juvenil ante los estudios tradicionales y los riesgos de que la IA y las redes sociales erosionen la lectura y el pensamiento crítico.",
+        chapters: [
+          { time: 3508, label: "58:28", title: "Introducción: El informe PISA y la evaluación de la inteligencia en adolescentes" },
+          { time: 3783, label: "01:03:03", title: "La hegemonía asiática y los factores del retroceso educativo en Occidente" },
+          { time: 3955, label: "01:05:55", title: "La percepción juvenil del éxito y la desvalorización de la educación superior" },
+          { time: 4061, label: "01:07:41", title: "Del uso de herramientas tradicionales (calculadora) al riesgo pasivo de la IA" },
+          { time: 4516, label: "01:15:16", title: "La importancia de la lectura profunda y la necesidad de priorizar la educación nacional" }
+        ]
+      },
       {
         id: "2026-10-22-union-radio",
         youtubeId: "G0-RLLlL1Q8",
@@ -217,6 +237,28 @@
         ]
       }
     ];
+
+    // ============================================================================
+    // 1.5 AUTO-ORDENAMIENTO CRONOLÓGICO (DE MÁS RECIENTE A MÁS ANTIGUA)
+    // ============================================================================
+    function parseSpanishDate(dateStr) {
+      if (!dateStr) return 0;
+      const months = {
+        ene: 0, feb: 1, mar: 2, abr: 3, may: 4, jun: 5,
+        jul: 6, ago: 7, sep: 8, set: 8, oct: 9, nov: 10, dic: 11
+      };
+      const parts = dateStr.trim().toLowerCase().replace(/\./g, '').split(/\s+/);
+      if (parts.length >= 3) {
+        const day = parseInt(parts[0], 10) || 1;
+        const monthPrefix = parts[1].substring(0, 3);
+        const month = months[monthPrefix] !== undefined ? months[monthPrefix] : 0;
+        const year = parseInt(parts[2], 10) || 2026;
+        return new Date(year, month, day).getTime();
+      }
+      return Date.parse(dateStr) || 0;
+    }
+
+    INTERVIEWS_DATA.sort((a, b) => parseSpanishDate(b.date) - parseSpanishDate(a.date));
 
     // ============================================================================
     // 2. LÓGICA DEL REPRODUCTOR DE YOUTUBE Y NAVEGACIÓN
@@ -393,7 +435,7 @@
     document.getElementById('search-input').addEventListener('input', renderArchive);
 
     // ============================================================================
-    // 4. ASISTENTE GENERADOR DE CÓDIGO (BLINDADO CONTRA COMILLAS Y COMAS)
+    // 4. ASISTENTE GENERADOR DE CÓDIGO (BLINDADO + SOPORTE 119:00 o 01:19:00)
     // ============================================================================
     function toggleModal(show) {
       document.getElementById('generator-modal').classList.toggle('hidden', !show);
@@ -406,7 +448,15 @@
     function parseMinToSec(str) {
       const cleaned = cleanStr(str);
       const parts = cleaned.split(':').map(Number);
-      if (parts.length === 2) return (parts[0] * 60) + parts[1];
+      if (parts.length === 2) {
+        // Si alguien escribe "119:00" queriendo decir 1 hora y 19 min (1h19m), lo corrige a 79 min:
+        if (parts[0] >= 100) {
+          const hours = Math.floor(parts[0] / 100);
+          const mins = parts[0] % 100;
+          return (hours * 3600) + (mins * 60) + parts[1];
+        }
+        return (parts[0] * 60) + parts[1];
+      }
       if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + parts[2];
       return Number(cleaned) || 0;
     }
@@ -442,7 +492,7 @@
         id: `entrevista-${ytId}-${startSec}`,
         youtubeId: ytId,
         title: title || "Nueva Entrevista",
-        date: date || "Fecha",
+        date: date || "10 Ene 2026",
         media: "Entre Líneas con Vladimir Villegas · Unión Radio",
         startSeconds: startSec,
         endSeconds: endSec,
@@ -459,7 +509,7 @@
     function copyGeneratedCode() {
       const code = document.getElementById('gen-output').textContent;
       navigator.clipboard.writeText(code);
-      alert("¡Código copiado! Pégalo SIEMPRE justo debajo de la línea 'const INTERVIEWS_DATA = [' en tu index.html.");
+      alert("¡Código copiado! Pégalo SIEMPRE justo debajo de la línea 'const INTERVIEWS_DATA = [' (el sistema las ordenará solas por fecha).");
     }
 
     // Inicializar vista
