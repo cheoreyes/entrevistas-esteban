@@ -181,7 +181,43 @@
     // 1. BASE DE DATOS DE ENTREVISTAS (PEGA SIEMPRE JUSTO DEBAJO DE ESTA LÍNEA)
     // ============================================================================
     const INTERVIEWS_DATA = [
+     
       {
+        id: "2026-10-22-union-radio",
+        youtubeId: "G0-RLLlL1Q8",
+        title: "La Revolución del Auto Eléctrico, Geopolítica de Chips y el Reto Energético",
+        date: "22 Oct 2026",
+        media: "Entre Líneas con Vladimir Villegas · Unión Radio",
+        startSeconds: 2105, // 35:05
+        endSeconds: 3373,   // 56:13
+        tags: ["Autos Eléctricos", "Geopolítica Tech", "Inteligencia Artificial", "Venezuela"],
+        summary: "Análisis profundo a propósito del lanzamiento del Tesla Roadster: por qué el auto eléctrico es el corazón de la nueva revolución industrial, cómo la china BYD cuadruplica en ventas a Tesla (8M vs 1.9M), los 4 pilares geopolíticos (chips en Taiwán, tierras raras, litio y satélites) y la urgencia de recuperar el sistema eléctrico en Venezuela.",
+        chapters: [
+          { time: 2105, label: "35:05", title: "Bienvenida y el show viral del Tesla Roadster" },
+          { time: 2224, label: "37:04", title: "Los 3 pilares: Nuevos motores eléctricos, baterías y chips con IA" },
+          { time: 2423, label: "40:23", title: "BYD (8 millones) vs. Tesla (1.9 millones) y el giro a los Robotaxis" },
+          { time: 2769, label: "46:09", title: "Geopolítica: Nvidia/Taiwán, Tierras Raras (90% China), Litio y Espacio" },
+          { time: 3079, label: "51:19", title: "Venezuela: El potencial del Guri, energía solar y políticas de Estado" }
+        ]
+      },
+      {
+        id: "entrevista-c_TwL1rpOi8-3575",
+        youtubeId: "c_TwL1rpOi8",
+        title: "Inteligencia Artificial, Regulación y Ciberseguridad",
+        date: "08 Oct 2026",
+        media: "Entre Líneas con Vladimir Villegas · Unión Radio",
+        startSeconds: 3575, // 59:35
+        endSeconds: 7116,   // 01:58:36
+        tags: ["Inteligencia Artificial", "Tecnología", "Seguridad"],
+        summary: "Análisis sobre la falta de regulación efectiva en EE. UU., los riesgos de ciberseguridad expuestos por investigaciones recientes en laboratorios de IA, la importancia crítica de la protección de datos en América Latina y los retos educativos frente a las nuevas tecnologías.",
+        chapters: [
+          { time: 3575, label: "59:35", title: "Introducción: Inteligencia artificial, seguridad y autorregulación" },
+          { time: 3626, label: "01:00:26", title: "Vulnerabilidades globales y las fallas en los controles de los laboratorios de IA" },
+          { time: 4051, label: "01:07:31", title: "El impacto en los países en desarrollo y la urgencia de leyes de protección de datos" },
+          { time: 4578, label: "01:16:18", title: "Desafíos en la educación, la lectura y el pensamiento crítico ante la IA" }
+        ]
+      }
+       {
   "id": "entrevista-F0heuufO7yY-3508",
   "youtubeId": "F0heuufO7yY",
   "title": "El Informe PISA, Inteligencia Artificial y el Declive del Pensamiento Crítico",
@@ -225,41 +261,6 @@
     }
   ]
 },
-      {
-        id: "2026-10-22-union-radio",
-        youtubeId: "G0-RLLlL1Q8",
-        title: "La Revolución del Auto Eléctrico, Geopolítica de Chips y el Reto Energético",
-        date: "22 Oct 2026",
-        media: "Entre Líneas con Vladimir Villegas · Unión Radio",
-        startSeconds: 2105, // 35:05
-        endSeconds: 3373,   // 56:13
-        tags: ["Autos Eléctricos", "Geopolítica Tech", "Inteligencia Artificial", "Venezuela"],
-        summary: "Análisis profundo a propósito del lanzamiento del Tesla Roadster: por qué el auto eléctrico es el corazón de la nueva revolución industrial, cómo la china BYD cuadruplica en ventas a Tesla (8M vs 1.9M), los 4 pilares geopolíticos (chips en Taiwán, tierras raras, litio y satélites) y la urgencia de recuperar el sistema eléctrico en Venezuela.",
-        chapters: [
-          { time: 2105, label: "35:05", title: "Bienvenida y el show viral del Tesla Roadster" },
-          { time: 2224, label: "37:04", title: "Los 3 pilares: Nuevos motores eléctricos, baterías y chips con IA" },
-          { time: 2423, label: "40:23", title: "BYD (8 millones) vs. Tesla (1.9 millones) y el giro a los Robotaxis" },
-          { time: 2769, label: "46:09", title: "Geopolítica: Nvidia/Taiwán, Tierras Raras (90% China), Litio y Espacio" },
-          { time: 3079, label: "51:19", title: "Venezuela: El potencial del Guri, energía solar y políticas de Estado" }
-        ]
-      },
-      {
-        id: "entrevista-c_TwL1rpOi8-3575",
-        youtubeId: "c_TwL1rpOi8",
-        title: "Inteligencia Artificial, Regulación y Ciberseguridad",
-        date: "08 Oct 2026",
-        media: "Entre Líneas con Vladimir Villegas · Unión Radio",
-        startSeconds: 3575, // 59:35
-        endSeconds: 7116,   // 01:58:36
-        tags: ["Inteligencia Artificial", "Tecnología", "Seguridad"],
-        summary: "Análisis sobre la falta de regulación efectiva en EE. UU., los riesgos de ciberseguridad expuestos por investigaciones recientes en laboratorios de IA, la importancia crítica de la protección de datos en América Latina y los retos educativos frente a las nuevas tecnologías.",
-        chapters: [
-          { time: 3575, label: "59:35", title: "Introducción: Inteligencia artificial, seguridad y autorregulación" },
-          { time: 3626, label: "01:00:26", title: "Vulnerabilidades globales y las fallas en los controles de los laboratorios de IA" },
-          { time: 4051, label: "01:07:31", title: "El impacto en los países en desarrollo y la urgencia de leyes de protección de datos" },
-          { time: 4578, label: "01:16:18", title: "Desafíos en la educación, la lectura y el pensamiento crítico ante la IA" }
-        ]
-      }
     ];
 
     // ============================================================================
