@@ -91,7 +91,7 @@
   <section id="highlights" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-white/10">
     <div class="mb-6">
       <h2 class="text-xl font-bold text-white">Momentos Clave de esta Entrevista</h2>
-      <p class="text-sm text-slate-400">Salta directamente a las tesis más importantes sin ver los 21 minutos completos.</p>
+      <p class="text-sm text-slate-400">Salta directamente a las tesis más importantes de la conversación activa.</p>
     </div>
     <div id="highlights-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
   </section>
@@ -103,7 +103,7 @@
         <h2 class="text-2xl font-bold text-white">Repositorio de Entrevistas</h2>
         <p class="text-sm text-slate-400">Filtra por temática o busca conceptos clave.</p>
       </div>
-      <input id="search-input" type="text" placeholder="Buscar tema (ej. Nvidia, Guri, BYD, Litio)..." 
+      <input id="search-input" type="text" placeholder="Buscar tema (ej. Nvidia, Guri, BYD, Ciberseguridad)..." 
         class="w-full md:w-80 px-4 py-2 rounded-xl bg-brand-900 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400" />
     </div>
 
@@ -125,7 +125,7 @@
         <h3 class="text-lg font-bold text-white">Generador de Nueva Entrevista (Modo Admin)</h3>
         <button onclick="toggleModal(false)" class="text-slate-400 hover:text-white text-xl">&times;</button>
       </div>
-      <p class="text-xs text-slate-300">Llena los datos del video de YouTube y este asistente te dará el bloque listo para copiar y pegar debajo de <code>const INTERVIEWS_DATA = [</code> en tu archivo <code>index.html</code> de GitHub.</p>
+      <p class="text-xs text-slate-300">Llena los datos del video de YouTube y este asistente te dará el bloque listo para copiar y pegar justo debajo de la línea <code>const INTERVIEWS_DATA = [</code> en tu archivo <code>index.html</code>.</p>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <div class="sm:col-span-2">
@@ -133,11 +133,11 @@
           <input id="gen-url" type="text" placeholder="https://www.youtube.com/watch?v=..." class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div>
-          <label class="block text-slate-400 mb-1">Minuto de Inicio (MM:SS)</label>
+          <label class="block text-slate-400 mb-1">Minuto de Inicio (MM:SS o HH:MM:SS)</label>
           <input id="gen-start" type="text" placeholder="35:05" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div>
-          <label class="block text-slate-400 mb-1">Minuto de Fin (MM:SS)</label>
+          <label class="block text-slate-400 mb-1">Minuto de Fin (MM:SS o HH:MM:SS)</label>
           <input id="gen-end" type="text" placeholder="56:13" class="w-full p-2 rounded bg-brand-900 border border-white/10 text-white" />
         </div>
         <div class="sm:col-span-2">
@@ -168,7 +168,7 @@
 
       <div id="gen-output-container" class="hidden space-y-2 pt-2">
         <div class="flex justify-between items-center">
-          <span class="text-xs text-emerald-400 font-mono">¡Listo! Copia este bloque y pégalo debajo de INTERVIEWS_DATA:</span>
+          <span class="text-xs text-emerald-400 font-mono">¡Listo! Copia este bloque y pégalo justo debajo de const INTERVIEWS_DATA = [</span>
           <button onclick="copyGeneratedCode()" class="text-xs px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-mono">Copiar</button>
         </div>
         <pre id="gen-output" class="p-3 rounded-xl bg-black/90 border border-white/10 text-xs font-mono text-cyan-300 overflow-x-auto"></pre>
@@ -178,7 +178,7 @@
 
   <script>
     // ============================================================================
-    // 1. BASE DE DATOS DE ENTREVISTAS (PEGA AQUÍ LAS NUEVAS ENTREVISTAS CADA JUEVES)
+    // 1. BASE DE DATOS DE ENTREVISTAS (PEGA SIEMPRE JUSTO DEBAJO DE ESTA LÍNEA)
     // ============================================================================
     const INTERVIEWS_DATA = [
       {
@@ -198,47 +198,25 @@
           { time: 2769, label: "46:09", title: "Geopolítica: Nvidia/Taiwán, Tierras Raras (90% China), Litio y Espacio" },
           { time: 3079, label: "51:19", title: "Venezuela: El potencial del Guri, energía solar y políticas de Estado" }
         ]
-      }
+      },
       {
-  "id": "entrevista-c_TwL1rpOi8-3575",
-  "youtubeId": "c_TwL1rpOi8",
-  "title": "Inteligencia Artificial, Regulación y Ciberseguridad",
-  "date": "08 Oct 2026",
-  "media": "Entre Líneas con Vladimir Villegas · Unión Radio",
-  "startSeconds": 3575,
-  "endSeconds": 7116,
-  "tags": [
-    "Inteligencia Artificial",
-    "Tecnología",
-    "Seguridad"
-  ],
-  "summary": "Análisis sobre la falta de regulación efectiva en EE. UU., los riesgos de ciberseguridad expuestos por investigaciones recientes en laboratorios de IA, la importancia crítica de la protección de datos en América Latina y los retos educativos frente a las nuevas tecnologías",
-  "chapters": [
-    {
-      "time": null,
-      "label": "\"59:35",
-      "title": "Introducción: Inteligencia artificial, seguridad y autorregulación\","
-    },
-    {
-      "time": 3626,
-      "label": "01:00:26",
-      "title": "Vulnerabilidades globales y las fallas en los controles de los laboratorios de IA,"
-    },
-    {
-      "time": 4051,
-      "label": "01:07:31",
-      "title": "El impacto en los países en desarrollo y la urgencia de leyes de protección de datos,"
-    },
-    {
-      "time": 4578,
-      "label": "01:16:18",
-      "title": "Desafíos en la educación, la lectura y el pensamiento crítico ante la IA"
-    }
-  ]
-},
+        id: "entrevista-c_TwL1rpOi8-3575",
+        youtubeId: "c_TwL1rpOi8",
+        title: "Inteligencia Artificial, Regulación y Ciberseguridad",
+        date: "08 Oct 2026",
+        media: "Entre Líneas con Vladimir Villegas · Unión Radio",
+        startSeconds: 3575, // 59:35
+        endSeconds: 7116,   // 01:58:36
+        tags: ["Inteligencia Artificial", "Tecnología", "Seguridad"],
+        summary: "Análisis sobre la falta de regulación efectiva en EE. UU., los riesgos de ciberseguridad expuestos por investigaciones recientes en laboratorios de IA, la importancia crítica de la protección de datos en América Latina y los retos educativos frente a las nuevas tecnologías.",
+        chapters: [
+          { time: 3575, label: "59:35", title: "Introducción: Inteligencia artificial, seguridad y autorregulación" },
+          { time: 3626, label: "01:00:26", title: "Vulnerabilidades globales y las fallas en los controles de los laboratorios de IA" },
+          { time: 4051, label: "01:07:31", title: "El impacto en los países en desarrollo y la urgencia de leyes de protección de datos" },
+          { time: 4578, label: "01:16:18", title: "Desafíos en la educación, la lectura y el pensamiento crítico ante la IA" }
+        ]
+      }
     ];
-   
-
 
     // ============================================================================
     // 2. LÓGICA DEL REPRODUCTOR DE YOUTUBE Y NAVEGACIÓN
@@ -415,17 +393,22 @@
     document.getElementById('search-input').addEventListener('input', renderArchive);
 
     // ============================================================================
-    // 4. ASISTENTE GENERADOR DE CÓDIGO (SIN CLAUDE NI PYTHON)
+    // 4. ASISTENTE GENERADOR DE CÓDIGO (BLINDADO CONTRA COMILLAS Y COMAS)
     // ============================================================================
     function toggleModal(show) {
       document.getElementById('generator-modal').classList.toggle('hidden', !show);
     }
 
+    function cleanStr(str) {
+      return (str || '').replace(/^["'\s,]+|["'\s,]+$/g, '');
+    }
+
     function parseMinToSec(str) {
-      const parts = str.trim().split(':').map(Number);
-      if (parts.length === 2) return parts[0] * 60 + parts[1];
-      if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-      return Number(str) || 0;
+      const cleaned = cleanStr(str);
+      const parts = cleaned.split(':').map(Number);
+      if (parts.length === 2) return (parts[0] * 60) + parts[1];
+      if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + parts[2];
+      return Number(cleaned) || 0;
     }
 
     function extractYtId(url) {
@@ -438,18 +421,20 @@
       const ytId = extractYtId(document.getElementById('gen-url').value);
       const startSec = parseMinToSec(document.getElementById('gen-start').value);
       const endSec = parseMinToSec(document.getElementById('gen-end').value);
-      const title = document.getElementById('gen-title').value.trim();
-      const date = document.getElementById('gen-date').value.trim();
-      const summary = document.getElementById('gen-summary').value.trim();
-      const tags = document.getElementById('gen-tags').value.split(',').map(s => s.trim()).filter(Boolean);
+      const title = cleanStr(document.getElementById('gen-title').value);
+      const date = cleanStr(document.getElementById('gen-date').value);
+      const summary = cleanStr(document.getElementById('gen-summary').value);
+      const tags = document.getElementById('gen-tags').value.split(',').map(s => cleanStr(s)).filter(Boolean);
       
       const chaptersRaw = document.getElementById('gen-chapters').value.split('\n').filter(Boolean);
       const chapters = chaptersRaw.map(line => {
         const [timeStr, ...titleParts] = line.split('|');
+        const cleanTime = cleanStr(timeStr || '0:00');
+        const cleanTitle = cleanStr(titleParts.join('|')) || 'Capítulo';
         return {
-          time: parseMinToSec(timeStr || '0:00'),
-          label: (timeStr || '0:00').trim(),
-          title: titleParts.join('|').trim() || 'Capítulo'
+          time: parseMinToSec(cleanTime),
+          label: cleanTime,
+          title: cleanTitle
         };
       });
 
@@ -474,7 +459,7 @@
     function copyGeneratedCode() {
       const code = document.getElementById('gen-output').textContent;
       navigator.clipboard.writeText(code);
-      alert("¡Código copiado! Ahora abre index.html en GitHub, pégalo debajo de 'const INTERVIEWS_DATA = [' y guarda.");
+      alert("¡Código copiado! Pégalo SIEMPRE justo debajo de la línea 'const INTERVIEWS_DATA = [' en tu index.html.");
     }
 
     // Inicializar vista
@@ -484,12 +469,10 @@
     // ============================================================================
     // 5. ACCESO SECRETO AL GENERADOR (OCULTO PARA EL PÚBLICO)
     // ============================================================================
-    // Opción A: Abrir agregando ?admin=1 al final de tu enlace web
     if (window.location.search.includes('admin=1') || window.location.hash === '#admin') {
       toggleModal(true);
     }
 
-    // Opción B: Abrir presionando Ctrl + Shift + E (o Cmd + Shift + E)
     document.addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'e') {
         e.preventDefault();
