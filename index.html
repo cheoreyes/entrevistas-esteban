@@ -30,7 +30,7 @@
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
-  <!-- HEADER -->
+  <!-- HEADER (LIMPIO PARA EL PÚBLICO) -->
   <header class="sticky top-0 z-40 glass-card border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -44,9 +44,6 @@
         <a href="#reproductor" class="hover:text-white transition">Entrevista Destacada</a>
         <a href="#highlights" class="hover:text-white transition">Momentos Clave</a>
         <a href="#archivo" class="hover:text-white transition">Archivo Completo</a>
-        <button onclick="toggleModal(true)" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-cyan-400 transition">
-          + Nueva Entrevista
-        </button>
       </nav>
     </div>
   </header>
@@ -114,24 +111,21 @@
     <div id="archive-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (LIMPIO PARA EL PÚBLICO) -->
   <footer class="border-t border-white/10 py-8 mt-12 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-center">
       <p>© 2026 Esteban Reyes Marcano · Repositorio de Análisis Tecnológico</p>
-      <button onclick="toggleModal(true)" class="text-slate-400 hover:text-cyan-400 font-mono transition">
-        ⚙️ Asistente para agregar nueva entrevista (Sin IA)
-      </button>
     </div>
   </footer>
 
-  <!-- MODAL: ASISTENTE VISUAL PARA GENERAR CÓDIGO DE NUEVA ENTREVISTA -->
+  <!-- MODAL OCULTO: ASISTENTE VISUAL PARA GENERAR CÓDIGO DE NUEVA ENTREVISTA -->
   <div id="generator-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto space-y-4 border border-cyan-500/30">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
-        <h3 class="text-lg font-bold text-white">Generador de Nueva Entrevista (Sin Claude ni Python)</h3>
+        <h3 class="text-lg font-bold text-white">Generador de Nueva Entrevista (Modo Admin)</h3>
         <button onclick="toggleModal(false)" class="text-slate-400 hover:text-white text-xl">&times;</button>
       </div>
-      <p class="text-xs text-slate-300">Llena los datos del video de YouTube y este asistente te dará el bloque listo para copiar y pegar dentro de <code>interviewsData</code> en tu archivo <code>index.html</code> de GitHub.</p>
+      <p class="text-xs text-slate-300">Llena los datos del video de YouTube y este asistente te dará el bloque listo para copiar y pegar debajo de <code>const INTERVIEWS_DATA = [</code> en tu archivo <code>index.html</code> de GitHub.</p>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <div class="sm:col-span-2">
@@ -447,6 +441,23 @@
     // Inicializar vista
     renderCurrentInterviewUI();
     renderArchive();
+
+    // ============================================================================
+    // 5. ACCESO SECRETO AL GENERADOR (OCULTO PARA EL PÚBLICO)
+    // ============================================================================
+    // Opción A: Abrir agregando ?admin=1 al final de tu enlace web
+    if (window.location.search.includes('admin=1') || window.location.hash === '#admin') {
+      toggleModal(true);
+    }
+
+    // Opción B: Abrir presionando Ctrl + Shift + E (o Cmd + Shift + E)
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'e') {
+        e.preventDefault();
+        const modal = document.getElementById('generator-modal');
+        toggleModal(modal.classList.contains('hidden'));
+      }
+    });
   </script>
 </body>
 </html>
